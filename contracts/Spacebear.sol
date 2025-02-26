@@ -4,6 +4,7 @@ pragma solidity ^0.8.21;
 
 import { ERC721 } from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+import "hardhat/console.sol";
 
 contract Spacebear is ERC721, Ownable {
   uint256 private _nextTokenId;
@@ -19,6 +20,7 @@ contract Spacebear is ERC721, Ownable {
 
   function buyToken() public payable {
     uint256 tokenId = _nextTokenId;
+    console.log("buyer", msg.sender);
     require(
       msg.value == (tokenId + 1) * 0.1 ether,
       " Wrong amount of funds sent"
