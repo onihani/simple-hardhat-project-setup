@@ -20,3 +20,4 @@ ignition/deployments/chain-31337
 .secret
 .infura
 .etherscan
+.passphrase

@@ -10,16 +10,36 @@ const etherScanKey = fs.readFileSync(".etherscan").toString().trim();
 
 const config: HardhatUserConfig = {
   solidity: "0.8.28",
+  etherscan: {
+    apiKey: etherScanKey,
+    customChains: [],
+  },
+  sourcify: {
+    enabled: true,
+  },
   networks: {
+    hardhat: {},
     sepolia: {
       url: `https://sepolia.infura.io/v3/${infuraProjectId}`,
       accounts: [devWalletPrivateKey],
+      // accounts: {
+      //   mnemonic,
+      //   path: "m/44'/60'/0'/0",
+      //   initialIndex: 0,
+      //   count: 20,
+      // },
     },
     somnia: {
       url: "https://dream-rpc.somnia.network",
-      accounts: [devWalletPrivateKey], // put dev menomonic or PK here,
+      accounts: [devWalletPrivateKey],
+      // accounts: {
+      //   mnemonic,
+      //   path: "m/44'/60'/0'/0",
+      //   initialIndex: 0,
+      //   count: 20,
+      // },
     },
-  }
+  },
 };
 
 export default config;
